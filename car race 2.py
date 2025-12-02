@@ -18,8 +18,6 @@ class Car:
     def drive(self, hours):
         self.travelled_distance += self.current_speed * hours
 
-
-# Main program: Race
 cars = []
 for i in range(1, 11):
     max_speed = random.randint(100, 200)
@@ -36,12 +34,10 @@ while True:
         car.drive(1)
 
     hours += 1
-    # Check if any car finished
     finished = any(car.travelled_distance >= race_distance for car in cars)
     if finished:
         break
 
-# Print table
 print(f"{'Reg':<10} {'Max Speed':<10} {'Curr Speed':<12} {'Distance':<10}")
 for car in cars:
     print(f"{car.registration_number:<10} {car.max_speed:<10} {car.current_speed:<12} {car.travelled_distance:<10}")
