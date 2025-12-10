@@ -1,0 +1,378 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: white;
+}
+
+
+.top-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 24px;
+}
+
+.game-title {
+  font-size: 2.4rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+.title-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title-icon {
+  font-size: 1.8rem;
+}
+
+
+.layout-root {
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  gap: 12px;
+  padding: 8px 24px 8px;
+}
+
+
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stat-card {
+  background: rgba(255,255,255,0.15);
+  padding: 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.turns-card {
+  align-items: center;
+}
+
+.turns-circle {
+  width: 60px;
+  height: 60px;
+}
+
+#clock {
+  Display: none;
+}
+.stat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.crew-hours.low {
+  background: rgba(255,100,100,0.4);
+  animation: shake 0.5s;
+}
+
+.beacon-indicator {
+  margin-top: 4px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #00ff88, #00cc66);
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(0,255,136,0.6);
+}
+
+
+.center-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#map-container {
+  background: rgba(0,0,0,0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  height: 500px;
+}
+
+
+#world-map {
+  width: 100%;
+  height: 100%;
+  background-image: url('/static/img/world-map.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #4b4f9c;
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+#plane-icon {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background-image: url('/static/img/plane.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: left 0.6s ease-in-out, top 0.6s ease-in-out;
+  filter: drop-shadow(0 0 4px rgba(0,0,0,0.7));
+}
+
+
+
+.airports-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.airport-btn {
+  background: rgba(255,255,255,0.2);
+  border: 2px solid transparent;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.airport-btn strong {
+  font-size: 1rem;
+}
+
+.airport-btn:hover {
+  background: rgba(255,255,255,0.3);
+  transform: translateY(-2px);
+}
+
+.airport-btn.safe {
+  border-color: #4CAF50;
+  box-shadow: 0 0 12px rgba(76,175,80,0.5);
+}
+
+.airport-btn.risky {
+  border-color: #ff9800;
+}
+
+.airport-btn.danger {
+  border-color: #f44336;
+  background: rgba(244,67,54,0.2);
+}
+
+
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.control-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.control-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.best-score-box {
+  margin-top: 8px;
+  background: rgba(255,255,255,0.15);
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.best-score-label {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.best-score-value {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.weather-notice {
+  margin-top: 8px;
+  background: #ff9800;
+  color: #000;
+  padding: 8px 10px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+
+.bottom-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0px 24px 16px;
+  margin-top: 12px;
+}
+
+.banter-log {
+  height: 80px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 10px;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  backdrop-filter: blur(10px);
+}
+
+.banter-line {
+  margin-bottom: 4px;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+.hint-text {
+  margin-top: 2px;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  max-width: 420px;
+  padding: 24px 24px 28px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.modal-content h2 {
+  margin-bottom: 12px;
+}
+
+.modal-content p {
+  margin-bottom: 8px;
+}
+
+.modal-content button {
+  margin-top: 8px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-content button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+@media (max-width: 900px) {
+  .layout-root {
+    grid-template-columns: 1fr;
+  }
+  .right-panel {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .left-panel {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+.region-europe { background: #1976d2 !important; color: white; border: 3px solid #0d47a1; }
+.region-americas { background: #d32f2f !important; color: white; border: 3px solid #b71c1c; }
+.region-africa { background: #f57c00 !important; color: white; border: 3px solid #e65100; }
+.region-asia { background: #fbc02d !important; color: black; border: 3px solid #f9a825; }
+.region-oceania { background: #7b1fa2 !important; color: white; border: 3px solid #4a148c; }
+.modal-image {
+  width: 350px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}

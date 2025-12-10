@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Finding Melvin</title>
+    <link rel="stylesheet" href="/static/css/game.css">
+</head>
+<body>
+    <header class="top-header">
+        <h1 class="game-title">Finding Melvin</h1>
+        <div class="title-icons">
+            <span class="title-icon plane-icon">✈️</span>
+            <span class="title-icon paw-icon">🐾</span>
+        </div>
+    </header>
+
+    <main class="layout-root">
+
+        <section class="left-panel">
+            <div class="stat-card turns-card">
+                <svg class="turns-circle" viewBox="0 0 120 120">
+                    <circle id="clock" cx="60" cy="60" r="50"></circle>
+                </svg>
+                <div class="stat-content">
+                    <div class="stat-label">Turns Left</div>
+                    <div id="turns-text" class="stat-value">--</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-label">Crew Hours</div>
+                <div id="crew-hours" class="stat-value">--</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-label">Fragments</div>
+                <div id="fragments" class="stat-value">0</div>
+            </div>
+
+            <div id="beacon" class="beacon-indicator hidden">
+                Beacon active: Melvin signal stronger!
+            </div>
+        </section>
+
+        <section class="center-panel">
+            <div id="map-container">
+                <div id="world-map">
+                    <div id="plane-icon"></div>
+                </div>
+            </div>
+            <section id="airports" class="airports-grid">
+            </section>
+        </section>
+
+        <section class="right-panel">
+			<button id="mode-btn" class="control-btn" onclick="toggleQuickMode()">Quick Game</button>
+			<button class="control-btn" onclick="restartGame()">New Game</button>
+			<button class="control-btn" onclick="buyHint()">Buy Hint</button>
+            <div class="best-score-box">
+                <div class="best-score-label">Best Quick Score</div>
+                <div id="best-score" class="best-score-value">--</div>
+            </div>
+
+            <div id="weather-notice" class="weather-notice hidden"></div>
+        </section>
+    </main>
+
+    <section class="bottom-bar">
+        <div id="banter-log" class="banter-log"></div>
+        <div id="hint-text" class="hint-text"></div>
+    </section>
+
+	<div id="victory-modal" class="modal hidden">
+	  <div class="modal-content">
+	    <img src="/static/img/victory.png" alt="Victory" class="modal-image">
+	    <h2>Mission Complete!</h2>
+	    <p>You recovered <span id="final-fragments">0</span> fragments.</p>
+	    <p>Turns used: <span id="final-turns">0</span></p>
+		<p>Melvin is surprised that you were able to retrieve the data so quickly.  He is grateful but secretly annoyed that his foreign holidays are over.</p>
+	    <button onclick="restartGame()">Play Again</button>
+	  </div>
+	</div>
+	<div id="lose-modal" class="modal hidden">
+	  <div class="modal-content">
+	    <img src="/static/img/gameover.png" alt="Game Over" class="modal-image">
+	    <h2>Game Over</h2>
+	    <p>Mission failed - turns exhausted!</p>
+		<p>Melvin's family are still waiting for him at home, meanwhile that he is enjoying some unforseen holidays, which he is not complaining about.</p>
+	    <p>Fragments recovered: <span id="final-fragments-lose">0</span></p>
+	    <button onclick="restartGame()">New Game</button>
+	  </div>
+	</div>
+	<div id="intro-screen" class="modal">
+	  <div class="modal-content">
+	    <h2>Finding Melvin</h2>
+	    <p>
+	      Melvin, the world’s most talented developer cat has come up with a revolutionary technique to transfer data instantaneously across the network. While working on it and testing it out, a blackout happened and in a moment of panic and to save the project he decided to scatter the data fragments into the Cloud.
+		  Your job as team member is to fly to your selected airports in search of the fragments and return them to Melvin so the system can be launched again.
+		  Use your turns wisely to hel save the company. 
+	    </p>
+	    <button onclick="startFromIntro()">Start Mission</button>
+	  </div>
+	</div>
+    
+    <script src="/static/js/game.js"></script>
+</body>
+</html>
